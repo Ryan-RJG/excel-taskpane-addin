@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Attributes</title>
+    <script>
+        async function submitData() {
+            const attribute = document.getElementById('attribute').value;
+            const comment = document.getElementById('comment').value;
+
+            if (!attribute || !comment) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const data = { attribute, comment };
+            await fetch('https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzIme4-qGS5H0x3VZhhpikcKQZwZ_To043F9kQvb7HvIoGsMDBl0EBIuFLtA1bk9yjq/exec/exec', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            alert('Data submitted successfully!');
+        }
+    </script>
+</head>
+<body>
+    <h3>Add Control Attribute & Comment</h3>
+    <label>Control Attribute:</label>
+    <input type="text" id="attribute"><br>
+    <label>Comment:</label>
+    <textarea id="comment"></textarea><br>
+    <button onclick="submitData()">Submit</button>
+</body>
+</html>
